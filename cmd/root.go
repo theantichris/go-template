@@ -38,7 +38,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	RootCmd.PersistentFlags().StringVar(&configFile, "config", "", "config file (default is $HOME/.config.yml)")
+	RootCmd.PersistentFlags().StringVar(&configFile, "config", "", "config file (default is $HOME/.config.toml)")
 	RootCmd.PersistentFlags().BoolVar(&Debug, "debug", false, "enable debug mode")
 
 	viper.BindPFlag("debug", RootCmd.PersistentFlags().Lookup("debug"))
@@ -63,7 +63,7 @@ func initConfig() {
 		viper.AddConfigPath(home)
 		viper.AddConfigPath(".")
 		viper.SetConfigName(".config")
-		viper.SetConfigType("yaml")
+		viper.SetConfigType("toml")
 	}
 
 	viper.AutomaticEnv()
