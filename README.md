@@ -3,17 +3,19 @@
 [![Go Version](https://img.shields.io/github/go-mod/go-version/theantichris/go-template)](https://go.dev/)
 [![Go Reference](https://pkg.go.dev/badge/github.com/theantichris/go-template.svg)](https://pkg.go.dev/github.com/theantichris/go-template)
 [![Go Report Card](https://goreportcard.com/badge/github.com/theantichris/go-template)](https://goreportcard.com/report/github.com/theantichris/go-template)
-[![Build Status](https://github.com/theantichris/go-template/actions/workflows/build.yml/badge.svg)](https://github.com/theantichris/go-template/actions/workflows/build.yml)
-[![Test Status](https://github.com/theantichris/go-template/actions/workflows/test.yml/badge.svg)](https://github.com/theantichris/go-template/actions/workflows/test.yml)
+[![Go](https://github.com/theantichris/go-template/actions/workflows/go.yml/badge.svg)](https://github.com/theantichris/go-template/actions/workflows/go.yml)
+[![Markdown Lint](https://github.com/theantichris/go-template/actions/workflows/markdown.yml/badge.svg)](https://github.com/theantichris/go-template/actions/workflows/markdown.yml)
 [![License](https://img.shields.io/github/license/theantichris/go-template)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/theantichris/go-template)](https://github.com/theantichris/go-template/releases)
 
-A modern Go template for building CLI and TUI applications with best practices and powerful tools.
+A modern Go template for building CLI and TUI applications with best
+practices and powerful tools.
 
 ## Features
 
 - 🎯 **Cobra Command Framework** - Build powerful CLI applications with ease
-- ⚙️ **Viper Configuration** - Flexible configuration management with TOML, environment variables, and flags
+- ⚙️ **Viper Configuration** - Flexible configuration management with TOML,
+  environment variables, and flags
 - 📝 **Structured Logging** - Beautiful logging with Charmbracelet's log package
 - 🎨 **Charmbracelet Tools** - Modern terminal UI capabilities
 - 🔧 **Environment Support** - `.env` file support for local development
@@ -38,18 +40,20 @@ go install github.com/theantichris/go-template@latest
 ## Quick Start
 
 1. **Clone and rename the template:**
-```bash
-git clone https://github.com/theantichris/go-template.git my-app
-cd my-app
-rm -rf .git
-git init
-```
+
+   ```bash
+   git clone https://github.com/theantichris/go-template.git my-app
+   cd my-app
+   rm -rf .git
+   git init
+   ```
 
 2. **Update module name:**
-```bash
-go mod edit -module github.com/yourusername/my-app
-go mod tidy
-```
+
+   ```bash
+   go mod edit -module github.com/yourusername/my-app
+   go mod tidy
+   ```
 
 3. **Customize the application:**
    - Edit `cmd/root.go` to change the command name and description
@@ -79,7 +83,9 @@ go build
 
 ### Configuration
 
-The application supports multiple configuration sources with the following precedence:
+The application supports multiple configuration sources with the following
+precedence:
+
 1. Command-line flags
 2. Environment variables
 3. Configuration file
@@ -112,7 +118,7 @@ export ENV_VAR=some-value
 
 ## Project Structure
 
-```
+```text
 go-template/
 ├── cmd/
 │   └── root.go         # Root command and configuration
@@ -129,7 +135,7 @@ go-template/
 
 ### Prerequisites
 
-- Go 1.22.1 or higher
+- Go 1.23.1 or higher
 - Git
 
 ### Building
@@ -160,11 +166,17 @@ go test -v ./...
 ### Linting
 
 ```bash
-# Install golangci-lint
+# Install Go linter
 go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
-# Run linters
+# Run Go linter
 golangci-lint run
+
+# Install Markdown linter
+brew install markdownlint-cli2
+
+# Run Markdown linter
+markdownlint-cli2 "**/*.md"
 ```
 
 ## Dependencies
@@ -172,7 +184,8 @@ golangci-lint run
 - [Cobra](https://github.com/spf13/cobra) - CLI framework
 - [Viper](https://github.com/spf13/viper) - Configuration management
 - [Charmbracelet Log](https://github.com/charmbracelet/log) - Structured logging
-- [Charmbracelet Fang](https://github.com/charmbracelet/fang) - Enhanced command execution
+- [Charmbracelet Fang](https://github.com/charmbracelet/fang) - Enhanced
+  command execution
 - [Godotenv](https://github.com/joho/godotenv) - .env file support
 
 ## Contributing
@@ -187,7 +200,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE)
+file for details.
 
 ## Acknowledgments
 

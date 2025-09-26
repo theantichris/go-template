@@ -38,6 +38,16 @@ go mod tidy       # clean up dependencies
 go mod download   # download dependencies
 ```
 
+### Linting
+
+```bash
+# Markdown linting (runs in GitHub Actions, installed via brew)
+markdownlint-cli2 "**/*.md"
+
+# Go linting (if golangci-lint is installed)
+golangci-lint run
+```
+
 ## Architecture
 
 The project follows a standard Go CLI application structure:
