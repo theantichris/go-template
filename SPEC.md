@@ -93,10 +93,11 @@
 
 - **Language**: Go
 - **Framework**: Cobra (CLI framework)
-- **Configuration**: Viper
+- **Configuration**: Viper (TOML config files, environment variables, flags)
+- **Logging**: Charmbracelet/log (structured logging with caller and timestamp)
 - **Key Libraries**:
-  - Library 1: Purpose
-  - Library 2: Purpose
+  - charmbracelet/fang: Enhanced command execution with context
+  - godotenv: .env file support for local development
 
 ### Data Model
 

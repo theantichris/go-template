@@ -1,11 +1,9 @@
 package cmd
 
 import (
-	"log/slog"
 	"os"
-	"time"
 
-	"github.com/MatusOllah/slogcolor"
+	"github.com/charmbracelet/log"
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -14,7 +12,7 @@ import (
 var (
 	configFile string
 	Debug      bool
-	Logger     *slog.Logger
+	Logger     *log.Logger
 	EnvVar     string
 )
 
@@ -29,7 +27,7 @@ var RootCmd = &cobra.Command{
 func Execute() {
 	err := RootCmd.Execute()
 	if err != nil {
-		Logger.Error("error running command", "component", "cmd.RootCmd")
+		Logger.Error("error running command")
 		os.Exit(1)
 	}
 }
@@ -49,9 +47,9 @@ func initConfig() {
 	initLogger()
 
 	if err := godotenv.Load(); err != nil {
-		Logger.Debug(".env file not found, using environment variables", "component", "cmd.RootCmd")
+		Logger.Debug(".env file not found, using environment variables")
 	} else {
-		Logger.Debug(".env file loaded successfully", "component", "cmd.RootCmd")
+		Logger.Debug(".env file loaded successfully")
 	}
 
 	if configFile != "" {
@@ -71,12 +69,12 @@ func initConfig() {
 
 	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
-			Logger.Debug("config file not found", "component", "cmd.RootCmd")
+			Logger.Debug("config file not found")
 		} else {
 			Logger.Error("error loading config file", "error", err)
 		}
 	} else {
-		Logger.Debug("using config file", "file", viper.ConfigFileUsed(), "component", "cmd.RootCmd")
+		Logger.Debug("using config file", "file", viper.ConfigFileUsed())
 	}
 
 	if viper.GetBool("debug") {
@@ -87,16 +85,13 @@ func initConfig() {
 
 // initLogger initializes the logger.
 func initLogger() {
-	logLevel := slog.LevelWarn
+	Logger = log.New(os.Stderr)
+	Logger.SetReportCaller(true)
+	Logger.SetReportTimestamp(true)
 
 	if Debug {
-		logLevel = slog.LevelDebug
+		Logger.SetLevel(log.DebugLevel)
+	} else {
+		Logger.SetLevel(log.WarnLevel)
 	}
-
-	Logger = slog.New(slogcolor.NewHandler(os.Stderr, &slogcolor.Options{
-		Level:      logLevel,
-		TimeFormat: time.RFC3339,
-	}))
-
-	slog.SetDefault(Logger)
 }

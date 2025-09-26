@@ -43,15 +43,17 @@ The project follows a standard Go CLI application structure:
   - Environment variables via `.env` file (using godotenv)
   - Config file (`.config.toml` in home directory or current directory)
   - Command-line flags (e.g., `--debug`, `--config`)
-- **Logging**: Uses structured logging with slog and slogcolor for colored output
+- **Logging**: Uses Charmbracelet's log package for structured logging
   - Debug mode can be enabled via `--debug` flag or config
+  - Logger includes timestamp and caller information
+  - Log levels: Debug, Info, Warn, Error (defaults to Warn, Debug with debug flag)
 
 ## Key Dependencies
 
 - **cobra**: Command-line interface framework
 - **viper**: Configuration management (env vars, config files, flags)
 - **charmbracelet/fang**: Enhanced command execution with context
-- **slogcolor**: Colored structured logging
+- **charmbracelet/log**: Structured logging with customizable output formats
 - **godotenv**: .env file support
 
 ## Development Notes
