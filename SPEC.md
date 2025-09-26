@@ -96,6 +96,7 @@
 - **Framework**: Cobra (CLI framework)
 - **Configuration**: Viper (TOML config files, environment variables, flags)
 - **Logging**: Charmbracelet/log (structured logging with caller and timestamp)
+- **Build & Release**: GoReleaser (automated multi-platform builds and releases)
 - **Key Libraries**:
   - charmbracelet/fang: Enhanced command execution with context
   - godotenv: .env file support for local development
@@ -187,7 +188,11 @@
 
 ### Update and Release Process
 
-[Process for releasing updates and new versions]
+1. **Development**: Work on features/fixes in feature branches
+2. **Testing**: Run tests with `go test ./...`
+3. **Version Tagging**: Tag releases following semantic versioning (v0.1.0, v1.0.0)
+4. **Automated Release**: GoReleaser automatically builds and publishes releases when tags are pushed
+5. **Distribution**: Binaries available for Linux, macOS, and Windows via GitHub Releases
 
 ## Glossary
 

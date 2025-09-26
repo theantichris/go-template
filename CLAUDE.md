@@ -38,6 +38,20 @@ go mod tidy       # clean up dependencies
 go mod download   # download dependencies
 ```
 
+### Releases
+
+```bash
+# Create a new release (automated via GitHub Actions)
+git tag v0.1.0
+git push origin v0.1.0
+
+# Test release locally (requires GoReleaser)
+goreleaser release --snapshot --clean
+
+# Check GoReleaser configuration
+goreleaser check
+```
+
 ### Linting
 
 ```bash
@@ -72,9 +86,19 @@ The project follows a standard Go CLI application structure:
 - **charmbracelet/log**: Structured logging with customizable output formats
 - **godotenv**: .env file support
 
+## Build and Release
+
+- **GoReleaser**: Automated release management configured in `.goreleaser.yaml`
+  - Builds for Linux, macOS (Darwin), and Windows
+  - Creates tar.gz archives (zip for Windows)
+  - Automatically generates changelog from commit messages
+  - Triggered by pushing version tags (e.g., v1.0.0)
+
 ## Development Notes
 
 - The root command is named "example" and should be renamed for your application
 - Debug logging is available via the `--debug` flag
 - Configuration precedence: flags > env vars > config file > defaults
 - Logger instance is globally available as `cmd.Logger`
+- Releases are automated via GoReleaser when tags are pushed to GitHub
+- Binary builds have CGO disabled for maximum portability

@@ -20,8 +20,13 @@ practices and powerful tools.
 - 🎨 **Charmbracelet Tools** - Modern terminal UI capabilities
 - 🔧 **Environment Support** - `.env` file support for local development
 - 📦 **Modular Structure** - Clean, organized project layout
+- 🚀 **Automated Releases** - GoReleaser integration for multi-platform builds
 
 ## Installation
+
+### From Release
+
+Download the latest release from the [releases page](https://github.com/theantichris/go-template/releases).
 
 ### From Source
 
@@ -149,6 +154,22 @@ GOOS=linux GOARCH=amd64 go build -o go-template-linux
 GOOS=darwin GOARCH=amd64 go build -o go-template-darwin
 GOOS=windows GOARCH=amd64 go build -o go-template.exe
 ```
+
+### Releasing
+
+This project uses [GoReleaser](https://goreleaser.com/) for automated releases.
+
+```bash
+# Create a new tag
+git tag v0.1.0
+git push origin v0.1.0
+
+# For local testing (requires GoReleaser installed)
+goreleaser release --snapshot --clean
+```
+
+Releases are automatically built and published when a new tag is pushed to
+GitHub.
 
 ### Testing
 
