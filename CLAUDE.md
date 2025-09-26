@@ -1,19 +1,23 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+ code in this repository.
 
 ## Project Overview
 
-A Go CLI/TUI template project using the Cobra command framework with Charmbracelet tools for terminal UI.
+A Go CLI/TUI template project using the Cobra command framework with
+ Charmbracelet tools for terminal UI.
 
 ## Common Commands
 
 ### Build
+
 ```bash
 go build
 ```
 
 ### Run
+
 ```bash
 go run main.go
 # Or after building:
@@ -21,12 +25,14 @@ go run main.go
 ```
 
 ### Test
+
 ```bash
 go test ./...
 go test -v ./...  # verbose output
 ```
 
 ### Module Management
+
 ```bash
 go mod tidy       # clean up dependencies
 go mod download   # download dependencies

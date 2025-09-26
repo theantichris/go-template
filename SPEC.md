@@ -15,6 +15,7 @@
 [High-level description of the proposed solution]
 
 ### Goals and Objectives
+
 - [ ] Primary goal 1
 - [ ] Primary goal 2
 - [ ] Secondary objective 1
@@ -198,4 +199,3 @@
 ## References
 
 [Links to relevant documentation, research, or related projects]
-
