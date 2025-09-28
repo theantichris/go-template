@@ -52,14 +52,18 @@ goreleaser release --snapshot --clean
 goreleaser check
 ```
 
-### Linting
+### Code Quality
 
 ```bash
-# Markdown linting (runs in GitHub Actions, installed via brew)
-markdownlint-cli2 "**/*.md"
+# Run pre-commit hooks on all files
+pre-commit run --all-files
 
-# Go linting (if golangci-lint is installed)
-golangci-lint run
+# Run pre-commit hooks on staged files
+pre-commit run
+
+# Manually run specific linters
+golangci-lint run         # Go linting
+markdownlint-cli2 "**/*.md"  # Markdown linting
 ```
 
 ## Architecture
@@ -99,6 +103,7 @@ The project follows a standard Go CLI application structure:
 - The root command is named "example" and should be renamed for your application
 - Debug logging is available via the `--debug` flag
 - Configuration precedence: flags > env vars > config file > defaults
-- Logger instance is globally available as `cmd.Logger`
+- Logger instance is passed via dependency injection to `NewRootCmd()`
 - Releases are automated via GoReleaser when tags are pushed to GitHub
 - Binary builds have CGO disabled for maximum portability
+- Pre-commit hooks automatically run on git commit to ensure code quality

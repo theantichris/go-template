@@ -184,7 +184,35 @@ go test -cover ./...
 go test -v ./...
 ```
 
-### Linting
+### Code Quality
+
+#### Pre-commit Hooks
+
+This project uses [pre-commit](https://pre-commit.com/) to ensure code quality
+and consistency. The hooks automatically run before each commit.
+
+```bash
+# Install pre-commit (macOS)
+brew install pre-commit
+
+# Install the git hooks
+pre-commit install
+
+# Run hooks manually on all files
+pre-commit run --all-files
+
+# Run hooks on staged files only
+pre-commit run
+```
+
+The following hooks are configured:
+
+- **Go**: `go fmt`, `go mod tidy`, unit tests, and `golangci-lint`
+- **Markdown**: `markdownlint` with auto-fix
+- **General**: trailing whitespace, end-of-file fixer, YAML validation,
+  large file detection, merge conflict detection
+
+#### Manual Linting
 
 ```bash
 # Install Go linter
