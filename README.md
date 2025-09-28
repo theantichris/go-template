@@ -184,7 +184,86 @@ go test -cover ./...
 go test -v ./...
 ```
 
-### Linting
+### Code Quality
+
+#### Pre-commit Hooks
+
+This project uses [pre-commit](https://pre-commit.com/) to ensure code quality
+and consistency. The hooks automatically run before each commit.
+
+##### Installing Pre-commit and Required Tools
+
+macOS (Homebrew)
+
+```bash
+# Install all tools via Homebrew
+brew install pre-commit golangci-lint markdownlint-cli codespell
+```
+
+Linux (Ubuntu/Debian)
+
+```bash
+# Install available packages via apt
+sudo apt update
+sudo apt install pre-commit golang-golangci-lint
+
+# Install Node.js and markdownlint-cli
+sudo apt install nodejs npm
+sudo npm install -g markdownlint-cli
+
+# Install codespell via pip
+sudo apt install python3-pip
+pip3 install codespell
+```
+
+Windows
+
+```bash
+# Using winget for golangci-lint
+winget install GolangCI.golangci-lint
+
+# Using pip for Python tools (requires Python installed)
+pip install pre-commit codespell
+
+# Using npm for markdownlint-cli (requires Node.js installed)
+npm install -g markdownlint-cli
+```
+
+Alternative: Using pip and npm directly (all platforms)
+
+```bash
+# Install Go linter
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+# Install Python tools
+pip install pre-commit codespell
+
+# Install Node.js tools
+npm install -g markdownlint-cli
+```
+
+##### Setting up pre-commit in your repository
+
+```bash
+# Install the git hooks
+pre-commit install
+
+# Run hooks manually on all files
+pre-commit run --all-files
+
+# Run hooks on staged files only
+pre-commit run
+```
+
+The following hooks are configured:
+
+- **Go**: `go fmt`, `go mod tidy`, unit tests, and `golangci-lint`
+- **Markdown**: `markdownlint` with auto-fix
+- **Spelling**: `codespell` for checking spelling errors
+- **General**: trailing whitespace, end-of-file fixer, YAML validation,
+  large file detection, merge conflict detection
+
+#### Manual Linting
 
 ```bash
 # Install Go linter
