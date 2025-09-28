@@ -59,7 +59,7 @@ func Execute() *cobra.Command {
 	if err := cmd.Execute(); err != nil {
 		logger.Error(ErrRootCmd.Error(), "error", err)
 
-		return cmd
+		return nil
 	}
 
 	return cmd
